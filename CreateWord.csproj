@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F3A42F7-16F4-467B-91C7-3D4EF4C7C8AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreateWord</RootNamespace>
+    <AssemblyName>CreateWord</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocX">
+      <HintPath>..\..\..\..\RealEstate\RealEstate.Web\bin\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\RealEstate\RealEstate.Web\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CREATE.cs" />
+    <Compile Include="createcompanies\CreateCityCompany.cs" />
+    <Compile Include="createcompanies\CreateCompany.cs" />
+    <Compile Include="createcompanies\CreateCountryCompany.cs" />
+    <Compile Include="createcompanies\CreateProvinceCompany.cs" />
+    <Compile Include="createcompanies\DocFactory.cs" />
+    <Compile Include="DB\DBhelper.cs" />
+    <Compile Include="format\formatHelper.cs" />
+    <Compile Include="listener\IDocCompilationListener.cs" />
+    <Compile Include="log\LogHelper.cs" />
+    <Compile Include="model\Companymodel.cs" />
+    <Compile Include="model\FDXXmodel.cs" />
+    <Compile Include="model\Parcelmodel.cs" />
+    <Compile Include="parcels\parcelHelper.cs" />
+    <Compile Include="picture\picHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="table\tableHelper.cs" />
+    <Compile Include="title\NumoftitleHelper.cs" />
+    <Compile Include="toc\tocHelper.cs" />
+    <Compile Include="txt\txtHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{3fac48b0-c23a-4fba-83a3-6d084cee2140}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Corelib\CoreLib.csproj">
+      <Project>{4f7f5495-99c4-4482-98f8-1fa802f5fd09}</Project>
+      <Name>CoreLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.DAL\RealEstate.DAL.csproj">
+      <Project>{bd7567ea-14e7-4812-8ab6-c9d7092daf0a}</Project>
+      <Name>RealEstate.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.Logic\RealEstate.Logic.csproj">
+      <Project>{8d0fd1ed-ae79-4909-8e9c-ab6d73255f6e}</Project>
+      <Name>RealEstate.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealEstate.Model\RealEstate.Model.csproj">
+      <Project>{1b7404ea-06b4-4f59-8664-52a607360122}</Project>
+      <Name>RealEstate.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
